@@ -1,6 +1,6 @@
 <%= simple_form_for([@project, @task]) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :status %>
+  <%= f.select :status, Task::STATUS_OPTIONS %>
   <%= f.button :submit %>
 <% end %>
