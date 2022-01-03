@@ -1,3 +1,18 @@
-<h2><%= @project.name %></h2>
+<h1><%= @project.name %></h1>
 <%= @project.description %>
 <%= link_to "Back", root_path %>
+
+<hr>
+  <h2>New Task</h2>
+  <%= render 'tasks/form' %>
+<hr>
+
+<h1>Tasks</h1>
+
+<% @project.tasks.each do |task| %>
+  <div>
+    <%= task.name %><span><i class="far fa-edit"></i></span>
+    <%= task.description %>
+    <%= task.status %>
+  </div>
+<% end %>
