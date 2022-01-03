@@ -10,9 +10,19 @@
 <h1>Tasks</h1>
 
 <% @project.tasks.each do |task| %>
-  <div>
-    <%= task.name %><span><i class="far fa-edit"></i></span>
-    <%= task.description %>
-    <%= task.status %>
-  </div>
+  <% if task.persisted? %>
+    <div>
+      <%= task.name %>
+      <span>
+        <%= link_to edit_project_task_path(task.project) do %>
+          <i class="far fa-edit"></i>
+        <% end %>
+        <%= link_to [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </span>
+      <%= task.description %>
+      <%= task.status %>
+    </div>
+  <% end %>
 <% end %>

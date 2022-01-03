@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project
-  before_action :set_task, only: [:show, :edit]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
     @tasks = @project.tasks
@@ -25,9 +25,14 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update
+    if @task.update(task_params)
       redirect_to(@task.project)
     end
+  end
+
+  def destroy
+    @task.destroy
+    redirect_to @project
   end
 
   private
