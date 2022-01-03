@@ -1,7 +1,11 @@
 <h1>Your Projects</h1>
+  <% @projects.each do |project| %>
+  <div>
+    <%= project.name %>
+    <%= project.description %>
+  </div>
+  <% end %>
 
-<%= simple_form_for(@project) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.button :submit %>
-    <% end %>
+
+
+<%= link_to "New project", new_project_path %>
